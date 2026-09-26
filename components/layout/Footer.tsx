@@ -44,12 +44,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
           {/* Col 1: Brand & Address */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-3">
-              <img
-                src={siteSettings.logoUrl}
-                alt={siteSettings.companyName}
-                className="h-12 w-auto object-contain bg-white rounded-lg p-1"
-              />
+            <div className="relative group inline-block">
+              {/* Glowing flame aura behind footer logo */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-orange-500/20 via-amber-400/20 to-orange-600/20 rounded-2xl blur-lg opacity-80 group-hover:opacity-100 transition-opacity" />
+              <div className="relative p-2 rounded-2xl bg-white shadow-xl border border-orange-200">
+                <img
+                  src={siteSettings.logoUrl}
+                  alt={siteSettings.companyName}
+                  className="h-16 sm:h-20 w-auto object-contain max-w-[280px]"
+                />
+              </div>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
               Specialized in high-pressure LPG reticulation, industrial gas manifold engineering, statutory PESO audits, and safety compliance advisory across South India.

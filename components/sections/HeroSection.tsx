@@ -22,6 +22,24 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Enterprise Narrative */}
           <div className="lg:col-span-6 space-y-6 text-left">
+            {/* Phenix Safety Solutions Brand Crest with Graphic Aura */}
+            <div className="relative inline-flex items-center gap-4 p-2.5 pr-5 rounded-2xl bg-white/95 border border-orange-200 shadow-lg group">
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-orange-500/25 via-amber-400/20 to-orange-600/25 blur-md pointer-events-none group-hover:opacity-100 transition-opacity" />
+              <img
+                src={siteSettings.logoUrl}
+                alt={siteSettings.companyName}
+                className="h-14 sm:h-16 w-auto object-contain relative z-10 drop-shadow-sm"
+              />
+              <div className="relative z-10 text-left border-l border-slate-200 pl-3">
+                <span className="text-[10px] font-mono font-bold tracking-widest text-orange-600 uppercase block">
+                  INDUSTRIAL GAS &amp; SAFETY AUDITS
+                </span>
+                <span className="text-xs font-extrabold text-slate-900 tracking-tight">
+                  {siteSettings.companyName}
+                </span>
+              </div>
+            </div>
+
             {/* Top Operational Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-50 text-orange-700 border border-orange-200 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />

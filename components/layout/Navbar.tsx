@@ -69,15 +69,23 @@ export default function Navbar() {
 
       {/* Main Nav */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-20 sm:h-24">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative h-14 w-auto flex items-center">
-              <img
-                src={siteSettings.logoUrl}
-                alt={siteSettings.companyName}
-                className="h-12 w-auto object-contain max-w-[200px]"
-              />
+          <Link href="/" className="flex items-center gap-3 group py-1">
+            {/* Phenix Logo with graphic aura & enlarged visual footprint */}
+            <div className="relative flex items-center">
+              {/* Dynamic glowing aura behind Phenix logo */}
+              <div className="absolute -inset-2.5 bg-gradient-to-r from-orange-500/20 via-amber-400/25 to-orange-600/20 rounded-2xl blur-md opacity-70 group-hover:opacity-100 transition-all duration-300 pointer-events-none" />
+              
+              <div className="relative p-1.5 rounded-xl bg-white/95 border border-orange-200/80 shadow-md group-hover:shadow-xl group-hover:border-orange-400 transition-all duration-300">
+                <img
+                  src={siteSettings.logoUrl}
+                  alt={siteSettings.companyName}
+                  className="h-14 sm:h-16 md:h-18 w-auto object-contain max-w-[240px] sm:max-w-[280px] transition-transform duration-300 group-hover:scale-[1.03]"
+                />
+                {/* Subtle graphic pulse indicator on the Phoenix safety shield */}
+                <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white shadow-sm animate-pulse" title="Safety System Active" />
+              </div>
             </div>
           </Link>
 
