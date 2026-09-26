@@ -1,64 +1,50 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import AnnouncementBar from "@/components/layout/AnnouncementBar";
-import FloatingActionButtons from "@/components/layout/FloatingActionButtons";
-import ScrollToTop from "@/components/layout/ScrollToTop";
-import LoadingScreen from "@/components/ui/LoadingScreen";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import LoadingScreen from '@/components/ui/LoadingScreen';
+import { AdminProvider } from '@/context/AdminContext';
+import AdminSettingsDrawer from '@/components/admin/AdminSettingsDrawer';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
-  title: "AGTRS IDART PRIVATE LIMITED | LPG Safety, Pipelines & Engineering Solutions",
-  description:
-    "AGTRS IDART PRIVATE LIMITED (IDART) is South India's premier enterprise for LPG Mandatory Inspection, Copper Gas Pipeline Installation, Startup Solutions, Roof Trusses & Fire Safety. Headquartered in Coimbatore, Tamil Nadu.",
+  title: 'PHENIX Safety Solutions | LPG, Industrial Gas, Safety Audits & Compliance Support',
+  description: 'PHENIX Safety Solutions - Premier LPG reticulated pipelines, industrial gas manifold engineering, statutory PESO audits, and compliance support across South India.',
   keywords: [
-    "AGTRS IDART",
-    "IDART Coimbatore",
-    "LPG Mandatory Inspection",
-    "LPG Gas Pipeline Installation",
-    "LPG Pipeline South India",
-    "LPG Safety Inspection",
-    "Gas Pipeline Installation Coimbatore",
-    "LPG Pipeline Installation Tamil Nadu",
-    "Startup Loan Solutions",
-    "Roof Truss Solutions",
-    "Fire Safety Services",
-    "LPG Distributor Services",
-    "S. Gowtham Kumar"
+    'PHENIX Safety Solutions',
+    'LPG Pipeline Installation',
+    'Industrial Gas Manifold',
+    'Safety Audits',
+    'Compliance Support',
+    'Coonoor Gas Piping',
+    'The Nilgiris Safety Audits',
+    'IS 6044 LPG Reticulation'
   ],
-  authors: [{ name: "AGTRS IDART PRIVATE LIMITED" }],
-  openGraph: {
-    title: "AGTRS IDART PRIVATE LIMITED | South India's Energy Safety & Engineering Leader",
-    description:
-      "Bringing safe flames to every home across South India. 457+ Branches, 482+ Field Engineers, 3687+ LPG Distributors Served.",
-    type: "website",
-    locale: "en_IN"
-  }
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="min-h-screen flex flex-col bg-white text-slate-900 antialiased font-sans selection:bg-orange-500 selection:text-white">
-        <LoadingScreen />
-        <AnnouncementBar />
-        <Navbar />
-        <main className="flex-1 w-full">{children}</main>
-        <Footer />
-        <FloatingActionButtons />
-        <ScrollToTop />
+    <html lang="en" className={inter.variable}>
+      <body className="min-h-screen flex flex-col bg-white text-slate-900 antialiased selection:bg-orange-500 selection:text-white">
+        <AdminProvider>
+          <LoadingScreen />
+          <Navbar />
+          <main className="flex-1 w-full bg-white">
+            {children}
+          </main>
+          <Footer />
+          <AdminSettingsDrawer />
+        </AdminProvider>
       </body>
     </html>
   );

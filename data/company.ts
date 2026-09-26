@@ -10,11 +10,11 @@ export interface OfficeLocation {
 }
 
 export const COMPANY_INFO = {
-  legalName: "AGTRS IDART PRIVATE LIMITED",
-  brandName: "IDART",
-  tagline: "Built on Trust. Driven by Safety. Powered by People.",
-  heroHeadline: "WE BRING FLAMES TO EVERY HOME ACROSS SOUTH INDIA",
-  heroSubtitle: "Safety, service and technology powering LPG consumers, distributors and businesses across South India.",
+  legalName: "PHENIX SAFETY SOLUTIONS",
+  brandName: "PHENIX",
+  tagline: "LPG - Industrial Gas - Safety Audits - Compliance Support",
+  heroHeadline: "ADVANCED LPG, INDUSTRIAL GAS & COMPLIANCE SAFETY ENGINEERING",
+  heroSubtitle: "Comprehensive reticulated gas pipelines, statutory safety audits, industrial manifold engineering, and PESO/OMC compliance solutions.",
   foundedYear: 2009,
   incorporatedYear: 2017,
   yearsOfExperience: "17+",
@@ -24,82 +24,115 @@ export const COMPANY_INFO = {
   regionalOfficesCount: "4",
   networkCoverage: "South India Wide Service Network",
   
-  ceo: {
-    name: "S. Gowtham Kumar",
-    title: "Chief Executive Officer",
-    company: "AGTRS IDART PRIVATE LIMITED",
-    quote1: "At IDART, our ambition is simple — to build an organization where safety, service quality, technology and people come together to create lasting value.",
-    quote2: "Every service we deliver represents a responsibility toward our customers, partners and communities.",
-    quote3: "We are committed to building IDART into a trusted and respected leader in India's safety and service ecosystem."
+  entrepreneur: {
+    name: "S GOWTHAM KUMAR",
+    title: "ENTREPRENEUR",
+    company: "PHENIX SAFETY SOLUTIONS",
+    phone: "9500848051",
+    email: "gowtham.s.kumar.07@gmail.com",
+    location: "Coonoor, The Nilgiris",
+    cardImage: "/images/entrepreneur-card.jpg",
+    quote1: "At PHENIX Safety Solutions, our mission is straightforward — delivering uncompromising technical integrity, industrial gas precision, and safety audit excellence.",
+    quote2: "Every gas manifold, copper pipeline, and compliance verification protects human lives, hospitality assets, and industrial enterprises.",
+    quote3: "We are committed to building PHENIX into South India's foremost benchmark for industrial gas engineering and statutory safety compliance."
   },
 
   compliance: {
+    gstin: "33AAQCA1658M1ZA",
     cin: "U01100TZ2017PTC029601",
-    gst: "33AAQCA1658M1ZA",
-    msme: "03-0095886",
-    duns: "772076483",
-    iso: "ISO 9001:2015",
-    isoScope: "Providing inspection services and conducting consumer safety awareness programs & import and trading of fire extinguishers.",
+    msme: "UDYAM-TN-24-0019284",
+    iso: "ISO 9001:2015 Certified",
+    isoScope: "Providing LPG inspection services, industrial gas manifold pipeline design, safety audits & statutory compliance support.",
     iafCode: "IAF - 22IQLU17",
     iafServiceCodes: ["34", "36", "29"]
   },
 
   headOffice: {
-    city: "Coimbatore",
-    state: "Tamil Nadu",
-    country: "India",
+    title: "Corporate & Regional Headquarters",
     address: [
-      "SF No - 350, AGTRS IDART Building",
-      "Maruthamalai Main Road, Mullai Nagar",
-      "Coimbatore, Tamil Nadu, India - 641041"
+      "3/573 Kk Nagar",
+      "Hubbathalai, Coonoor",
+      "The Nilgiris, Tamil Nadu, India - 643202"
     ],
-    phone: "0422 - 4369081",
-    email: "info@idartpvtltd.in"
+    fullAddress: "3/573 Kk Nagar Hubbathalai Coonoor The Nilgiris 643202",
+    city: "Coonoor",
+    district: "The Nilgiris",
+    state: "Tamil Nadu",
+    pincode: "643202",
+    phone: "9500848051",
+    email: "gowtham.s.kumar.07@gmail.com",
+    workingHours: "Monday - Saturday: 9:00 AM - 7:00 PM IST"
   },
 
-  regionalOffices: [
+  services: [
     {
-      title: "Corporate Head Office",
-      address: [
-        "SF No - 350, AGTRS IDART Building",
-        "Maruthamalai Main Road, Mullai Nagar",
-        "Coimbatore, Tamil Nadu - 641041"
-      ],
-      city: "Coimbatore",
-      state: "Tamil Nadu",
-      pincode: "641041",
-      phone: "0422 - 4369081",
-      email: "info@idartpvtltd.in",
-      isHeadquarters: true
+      id: "lpg-safety-inspection",
+      title: "LPG Safety Inspection",
+      shortTitle: "Safety Inspection",
+      slug: "mandatory-inspection",
+      description: "Authorized multi-point safety testing protocol verifying cylinders, regulators, Suraksha hoses, and appliance burn efficiency.",
+      isCore: true,
+      highlightMetric: "3,687+ Agencies Served"
     },
     {
-      title: "Tamil Nadu Regional Office",
-      address: [
-        "No 22, Kalidass Nagar, 2nd Cross Street",
-        "Vadavalli, Coimbatore",
-        "Tamil Nadu, India - 641041"
-      ],
-      city: "Coimbatore",
-      state: "Tamil Nadu",
-      pincode: "641041",
-      phone: "+91 8248012319",
-      email: "tn.region@idartpvtltd.in"
+      id: "lpg-pipeline-installation",
+      title: "LPG Pipeline Installation",
+      shortTitle: "Gas Pipeline",
+      slug: "lpg-pipeline",
+      description: "Custom copper and heavy-gauge reticulated pipeline infrastructure built to IS 6044 standards for commercial kitchens and residential towers.",
+      isCore: true,
+      highlightMetric: "IS 6044 / ASTM B88 Standard"
     },
     {
-      title: "Andhra Pradesh Regional Office",
-      address: [
-        "No 4/2044 - Vellore Road, Opp. NPS Women's College",
-        "Greamspet, Chittoor",
-        "Andhra Pradesh, India - 517002"
-      ],
-      city: "Chittoor",
-      state: "Andhra Pradesh",
-      pincode: "517002",
-      phone: "+91 97904 47005",
-      email: "ap.region@idartpvtltd.in"
+      id: "industrial-gas-solutions",
+      title: "Industrial Gas Systems",
+      shortTitle: "Industrial Gas",
+      slug: "lpg-pipeline",
+      description: "High-pressure manifold systems, cryogenic vaporizers, LOT battery installations, and pressure regulation skids for factories and hospitality.",
+      isCore: true,
+      highlightMetric: "Dual-Stage PRV Regulators"
+    },
+    {
+      id: "safety-audits",
+      title: "Statutory Safety Audits",
+      shortTitle: "Safety Audits",
+      slug: "mandatory-inspection",
+      description: "Comprehensive risk assessments, combustible gas leak telemetry, hazard identification, and third-party audit reports for hospitality & commercial sites.",
+      isCore: true,
+      highlightMetric: "Calibrated Gas Detectors"
+    },
+    {
+      id: "compliance-support",
+      title: "Compliance & PESO Support",
+      shortTitle: "Compliance Support",
+      slug: "startup-solutions",
+      description: "Full statutory guidance for Petroleum and Explosives Safety Organization (PESO), Oil Marketing Companies (OMC), and local fire safety clearances.",
+      isCore: true,
+      highlightMetric: "Statutory Advisory"
+    },
+    {
+      id: "roof-truss-engineering",
+      title: "Roof Truss & Industrial Sheds",
+      shortTitle: "Roof Truss",
+      slug: "roof-truss",
+      description: "High-tensile tubular structural steel truss fabrication and pre-coated Galvalume industrial sheds engineered to IS 800 standards.",
+      isCore: true,
+      highlightMetric: "IS 800 / Wind Code Tested"
     }
   ],
 
-  statesServed: ["Tamil Nadu", "Kerala", "Andhra Pradesh", "Telangana", "Puducherry"],
-  expansionStates: ["Karnataka", "Madhya Pradesh", "Odisha", "Maharashtra"]
+  statesServed: [
+    "Tamil Nadu",
+    "Kerala",
+    "Andhra Pradesh",
+    "Telangana",
+    "Puducherry"
+  ],
+
+  expansionStates: [
+    "Karnataka",
+    "Maharashtra",
+    "Madhya Pradesh",
+    "Odisha"
+  ]
 };

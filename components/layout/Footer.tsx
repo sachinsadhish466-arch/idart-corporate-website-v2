@@ -1,166 +1,186 @@
-"use client";
+'use client';
 
-import React from "react";
-import Link from "next/link";
-import { Flame, Shield, MapPin, Phone, Mail, Award, CheckCircle2 } from "lucide-react";
-import { COMPANY_INFO } from "../../data/company";
-import { FOOTER_LINKS } from "../../data/navigation";
+import React from 'react';
+import Link from 'next/link';
+import { useAdmin } from '@/context/AdminContext';
+import { ShieldCheck, MapPin, Phone, Mail, Award, Clock, ArrowRight, Settings } from 'lucide-react';
 
 export default function Footer() {
+  const { siteSettings, setIsSettingsOpen } = useAdmin();
+
   return (
-    <footer className="bg-slate-950 border-t border-slate-800 text-slate-400 text-sm relative overflow-hidden">
-      {/* Subtle background glow */}
-      <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
-          {/* Brand & Corporate Overview */}
-          <div className="lg:col-span-4 space-y-4">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-orange-500 to-amber-600 text-white shadow-lg shadow-orange-500/20">
-                <Flame className="w-6 h-6" />
-              </div>
-              <div>
-                <span className="text-2xl font-black tracking-wider text-white">IDART</span>
-                <p className="text-[10px] font-semibold tracking-wider text-slate-400 uppercase">
-                  AGTRS IDART PRIVATE LIMITED
-                </p>
-              </div>
-            </Link>
-
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              AGTRS IDART PRIVATE LIMITED is a South Indian enterprise pioneering LPG mandatory inspections, high-pressure copper pipeline installations, structural roof trusses, and financial solutions. Operating across Tamil Nadu, Kerala, Andhra Pradesh, Telangana, Puducherry, and expanding nationally.
+    <footer className="bg-slate-950 text-white border-t border-slate-800">
+      {/* Top Banner */}
+      <div className="border-b border-slate-800/80 bg-gradient-to-r from-orange-950/20 via-slate-950 to-orange-950/20 py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+          <div>
+            <h3 className="text-lg font-bold text-white">
+              {siteSettings.companyName}
+            </h3>
+            <p className="text-xs text-slate-400 mt-0.5">
+              {siteSettings.tagline}
             </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <a
+              href={`tel:${siteSettings.phone}`}
+              className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold transition-colors"
+            >
+              Emergency Helpline: {siteSettings.phone}
+            </a>
+            <button
+              onClick={() => setIsSettingsOpen(true)}
+              className="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-colors flex items-center gap-1.5"
+            >
+              <Settings className="w-3.5 h-3.5" />
+              <span>Edit Details</span>
+            </button>
+          </div>
+        </div>
+      </div>
 
-            {/* ISO 9001:2015 Badge */}
-            <div className="p-3.5 rounded-2xl bg-slate-900 border border-slate-800 space-y-1.5">
-              <div className="flex items-center gap-2 text-xs font-bold text-white">
-                <Award className="w-4 h-4 text-orange-400" />
-                <span>ISO 9001:2015 Certified Organization</span>
-              </div>
-              <p className="text-[11px] text-slate-400 leading-normal">
-                IAF Accreditation: <strong className="text-slate-200">22IQLU17</strong> (Service Codes 34, 36 & 29). Quality Management System.
-              </p>
+      {/* Main Footer Links */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+          {/* Col 1: Brand & Address */}
+          <div className="lg:col-span-4 space-y-4">
+            <div className="flex items-center gap-3">
+              <img
+                src={siteSettings.logoUrl}
+                alt={siteSettings.companyName}
+                className="h-12 w-auto object-contain bg-white rounded-lg p-1"
+              />
             </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest border-b border-slate-800 pb-2">
-              Quick Links
-            </h4>
-            <ul className="space-y-2.5 text-xs">
-              {FOOTER_LINKS.quickLinks.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="hover:text-orange-400 transition-colors flex items-center gap-1.5">
-                    <span className="text-orange-500">•</span>
-                    <span>{item.label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest border-b border-slate-800 pb-2">
-              Core Capabilities
-            </h4>
-            <ul className="space-y-2.5 text-xs">
-              {FOOTER_LINKS.services.map((item) => (
-                <li key={item.label}>
-                  <Link href={item.href} className="hover:text-orange-400 transition-colors flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3 h-3 text-orange-400 shrink-0" />
-                    <span>{item.label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Regional Corporate Presence */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest border-b border-slate-800 pb-2">
-              Corporate Presence
-            </h4>
-            
-            <div className="space-y-3 text-xs">
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Specialized in high-pressure LPG reticulation, industrial gas manifold engineering, statutory PESO audits, and safety compliance advisory across South India.
+            </p>
+            <div className="p-3.5 rounded-2xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-orange-400 shrink-0 mt-0.5" />
-                <div>
-                  <strong className="text-white block">Corporate Head Office</strong>
-                  <span className="text-slate-400">
-                    SF No - 350, AGTRS IDART Building, Maruthamalai Main Road, Mullai Nagar, Coimbatore, Tamil Nadu - 641041
-                  </span>
-                </div>
+                <span className="leading-relaxed">{siteSettings.address}</span>
               </div>
-
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-orange-400 shrink-0" />
-                <span className="text-slate-300">0422 - 4369081 / +91 8248012319</span>
+                <a href={`tel:${siteSettings.phone}`} className="hover:text-orange-400 transition-colors">
+                  +91 {siteSettings.phone}
+                </a>
               </div>
-
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-orange-400 shrink-0" />
-                <span className="text-slate-300">info@idartpvtltd.in</span>
+                <a href={`mailto:${siteSettings.email}`} className="hover:text-orange-400 transition-colors truncate">
+                  {siteSettings.email}
+                </a>
               </div>
             </div>
+          </div>
 
-            {/* Social Icons Placeholder */}
-            <div className="pt-2 flex items-center gap-3">
-              {["LinkedIn", "Facebook", "YouTube", "Instagram"].map((platform) => (
-                <a
-                  key={platform}
-                  href={`#${platform.toLowerCase()}`}
-                  className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-semibold text-slate-300 hover:text-white hover:border-orange-500/50 hover:bg-slate-800 transition-colors"
-                >
-                  {platform}
-                </a>
-              ))}
+          {/* Col 2: Core Services */}
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="text-xs font-black uppercase tracking-wider text-orange-400">
+              Core Divisions
+            </h4>
+            <ul className="space-y-2 text-xs text-slate-400">
+              <li>
+                <Link href="/lpg-pipeline" className="hover:text-white transition-colors">
+                  LPG Pipeline & Reticulation Systems
+                </Link>
+              </li>
+              <li>
+                <Link href="/mandatory-inspection" className="hover:text-white transition-colors">
+                  Mandatory Consumer Safety Inspections
+                </Link>
+              </li>
+              <li>
+                <Link href="/#projects" className="hover:text-white transition-colors">
+                  Industrial Gas Manifolds & Vaporizers
+                </Link>
+              </li>
+              <li>
+                <Link href="/mandatory-inspection" className="hover:text-white transition-colors">
+                  Commercial Gas Leak Telemetry
+                </Link>
+              </li>
+              <li>
+                <Link href="/roof-truss" className="hover:text-white transition-colors">
+                  Engineered Roof Truss & Sheds
+                </Link>
+              </li>
+              <li>
+                <Link href="/startup-solutions" className="hover:text-white transition-colors">
+                  Commercial Kitchen Project Reports
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: Navigation */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-xs font-black uppercase tracking-wider text-orange-400">
+              Company
+            </h4>
+            <ul className="space-y-2 text-xs text-slate-400">
+              <li>
+                <Link href="/about" className="hover:text-white transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/#entrepreneur" className="hover:text-white transition-colors">
+                  Entrepreneur Profile
+                </Link>
+              </li>
+              <li>
+                <Link href="/#certificates" className="hover:text-white transition-colors">
+                  Authorized Certificates
+                </Link>
+              </li>
+              <li>
+                <Link href="/#projects" className="hover:text-white transition-colors">
+                  Our Projects
+                </Link>
+              </li>
+              <li>
+                <Link href="/branches" className="hover:text-white transition-colors">
+                  Branch Directory
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  Contact & Support
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 4: Statutory Compliance */}
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="text-xs font-black uppercase tracking-wider text-orange-400">
+              Compliance & Verification
+            </h4>
+            <div className="space-y-2 text-xs text-slate-400">
+              <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+                <span className="text-[10px] text-slate-500 uppercase block font-semibold">GSTIN (Verified)</span>
+                <span className="font-mono text-white text-xs">{siteSettings.gstin}</span>
+              </div>
+              <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+                <span className="text-[10px] text-slate-500 uppercase block font-semibold">Corporate ID (CIN)</span>
+                <span className="font-mono text-white text-xs">{siteSettings.cin}</span>
+              </div>
+              <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+                <span className="text-[10px] text-slate-500 uppercase block font-semibold">Quality Standard</span>
+                <span className="text-emerald-400 text-xs font-bold">ISO 9001:2015 Accredited</span>
+              </div>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Corporate Statutory Registrations */}
-        <div className="mt-12 pt-8 border-t border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-          <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
-            <span className="text-[10px] uppercase font-bold text-slate-400 block">Corporate Identity (CIN)</span>
-            <span className="text-xs font-mono font-bold text-slate-200 mt-1 block">
-              {COMPANY_INFO.compliance.cin}
-            </span>
-          </div>
-          <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
-            <span className="text-[10px] uppercase font-bold text-slate-400 block">GST Registration</span>
-            <span className="text-xs font-mono font-bold text-slate-200 mt-1 block">
-              {COMPANY_INFO.compliance.gst}
-            </span>
-          </div>
-          <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
-            <span className="text-[10px] uppercase font-bold text-slate-400 block">MSME Registration</span>
-            <span className="text-xs font-mono font-bold text-slate-200 mt-1 block">
-              {COMPANY_INFO.compliance.msme}
-            </span>
-          </div>
-          <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
-            <span className="text-[10px] uppercase font-bold text-slate-400 block">D-U-N-S Number</span>
-            <span className="text-xs font-mono font-bold text-slate-200 mt-1 block">
-              {COMPANY_INFO.compliance.duns}
-            </span>
-          </div>
-        </div>
-
-        {/* Legal & Copyright */}
-        <div className="mt-8 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© 2026 AGTRS IDART PRIVATE LIMITED. All Rights Reserved. CEO: S. Gowtham Kumar</p>
-          <div className="flex items-center gap-4">
-            <Link href="#privacy" className="hover:text-slate-300">Privacy Policy</Link>
-            <span>•</span>
-            <Link href="#terms" className="hover:text-slate-300">Terms & Conditions</Link>
-            <span>•</span>
-            <Link href="#disclaimer" className="hover:text-slate-300">Disclaimer</Link>
-          </div>
-        </div>
+      {/* Copyright Bar */}
+      <div className="border-t border-slate-900 py-6 px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500">
+        <p>
+          © {new Date().getFullYear()} {siteSettings.companyName}. All Rights Reserved.
+          Headquartered at {siteSettings.address}.
+        </p>
       </div>
     </footer>
   );

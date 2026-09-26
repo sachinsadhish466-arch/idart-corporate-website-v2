@@ -1,91 +1,91 @@
-"use client";
+'use client';
 
-import React from "react";
-import Link from "next/link";
-import { Flame, ShieldCheck, ArrowRight, PhoneCall, Award, MapPin, CheckCircle2 } from "lucide-react";
-import HeroEcosystem from "../ui/HeroEcosystem";
+import React from 'react';
+import Link from 'next/link';
+import { useAdmin } from '@/context/AdminContext';
+import HeroEcosystem from '@/components/ui/HeroEcosystem';
+import { Shield, ArrowRight, Award, CheckCircle2, ChevronRight, Phone, Sparkles } from 'lucide-react';
 
 export default function HeroSection() {
+  const { siteSettings } = useAdmin();
+
   return (
-    <section className="relative overflow-hidden pt-12 pb-16 lg:pt-16 lg:pb-24 bg-white border-b border-slate-100">
-      <div className="absolute inset-0 bg-engineering-grid opacity-60 pointer-events-none" />
+    <section className="relative min-h-[90vh] flex items-center bg-gradient-to-b from-slate-50 via-white to-slate-50 border-b border-slate-200 overflow-hidden">
+      {/* Precision Blueprint Grid */}
+      <div className="absolute inset-0 bg-engineering-grid opacity-40 pointer-events-none" />
 
-      <div className="absolute top-4 left-6 text-[10px] font-mono text-slate-400 hidden sm:block">
-        [IDART-ENG-V26] • LAT 11.0168° N • LNG 76.9558° E
-      </div>
-      <div className="absolute top-4 right-6 text-[10px] font-mono text-slate-400 hidden sm:block">
-        REF: ISO-9001:2015 • IS 6044 / OISD-162
-      </div>
+      {/* Ambient Radial Highlights */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
-            <div className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-50 text-orange-700 border border-orange-200">
-                <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-                South India's Certified Safety Enterprise
-              </span>
-              <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold text-slate-600 bg-slate-100 border border-slate-200">
-                <Award className="w-3.5 h-3.5 text-amber-500" />
-                ISO 9001:2015 Accredited
-              </span>
+          {/* Left Column: Enterprise Narrative */}
+          <div className="lg:col-span-6 space-y-6 text-left">
+            {/* Top Operational Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-50 text-orange-700 border border-orange-200 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+              <span>{siteSettings.tagline}</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.08] uppercase">
-              WE BRING <span className="text-orange-600">SAFE FLAMES</span>
-              <br />
-              TO EVERY HOME
-              <br />
-              <span className="text-slate-700 font-extrabold text-3xl sm:text-4xl lg:text-5xl">
-                ACROSS SOUTH INDIA
+            {/* Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1] uppercase">
+              {siteSettings.companyName.split(' ')[0]} <br />
+              <span className="text-orange-600">
+                {siteSettings.companyName.split(' ').slice(1).join(' ')}
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-600 max-w-xl font-normal leading-relaxed mx-auto lg:mx-0">
-              AGTRS IDART PRIVATE LIMITED is the premier enterprise specializing in LPG Mandatory Inspections, seamless copper gas pipelines, turnkey commercial manifolds, and industrial roof structures across 457+ verified branches.
+            {/* Subtitle */}
+            <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-xl">
+              High-integrity LPG reticulated pipelines, industrial gas manifold engineering, statutory PESO safety audits, and compliance clearances for hospitality, residential, and manufacturing sectors.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1 text-xs text-slate-700">
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>IS 6044 Gas Piping</span>
+            {/* Key Micro Trust Indicators */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+              <div className="p-3 rounded-xl bg-white border border-slate-200/80 shadow-sm">
+                <span className="text-[10px] text-slate-400 font-mono block uppercase">Standard</span>
+                <span className="text-xs font-bold text-slate-800">IS 6044 / PESO</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>457+ Verified Branches</span>
+              <div className="p-3 rounded-xl bg-white border border-slate-200/80 shadow-sm">
+                <span className="text-[10px] text-slate-400 font-mono block uppercase">Certification</span>
+                <span className="text-xs font-bold text-slate-800">ISO 9001:2015</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Zero-Leakage Assurance</span>
+              <div className="p-3 rounded-xl bg-white border border-slate-200/80 shadow-sm col-span-2 sm:col-span-1">
+                <span className="text-[10px] text-slate-400 font-mono block uppercase">Headquarters</span>
+                <span className="text-xs font-bold text-slate-800 truncate block">Coonoor, Nilgiris</span>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+            {/* CTA Action Buttons */}
+            <div className="pt-4 flex flex-wrap items-center gap-4">
               <Link
-                href="/mandatory-inspection"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-orange-600 text-white font-bold text-sm shadow-lg shadow-orange-500/20 hover:bg-orange-700 transition-all group"
+                href="/contact"
+                className="px-6 py-3.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-xl transition-all flex items-center gap-2 group"
               >
-                <span>Book Safety Inspection</span>
+                <span>Request Safety Audit</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/lpg-pipeline"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm border border-slate-200 transition-colors"
+                className="px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 font-bold text-xs uppercase tracking-wider shadow-sm hover:shadow transition-all flex items-center gap-2"
               >
-                <span>LPG Pipeline Engineering</span>
+                <span>Pipeline Systems</span>
+                <ChevronRight className="w-4 h-4 text-slate-400" />
               </Link>
             </div>
 
-            <div className="pt-2 flex items-center justify-center lg:justify-start gap-4 text-xs text-slate-500">
-              <div className="flex items-center gap-1.5">
-                <PhoneCall className="w-3.5 h-3.5 text-orange-600" />
-                <span>Regional Helpline: <strong className="text-slate-900">+91 8248012319</strong></span>
-              </div>
-              <span>•</span>
-              <span>HQ: Coimbatore, TN</span>
+            {/* Quick Contact line */}
+            <div className="pt-2 flex items-center gap-2 text-xs text-slate-500 font-medium">
+              <Phone className="w-3.5 h-3.5 text-orange-600" />
+              <span>Direct Entrepreneur Desk: </span>
+              <a href={`tel:${siteSettings.phone}`} className="font-bold text-slate-800 hover:text-orange-600 transition-colors">
+                +91 {siteSettings.phone}
+              </a>
             </div>
           </div>
 
+          {/* Right Column: Hero Interactive 5-Node Ecosystem */}
           <div className="lg:col-span-6 flex items-center justify-center">
             <HeroEcosystem />
           </div>
